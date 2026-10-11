@@ -14,13 +14,15 @@ lot, and not randomly.
 
 - **Years are not comparable — this is the most important caveat.** The counts rise
   steeply across years (10 / 17 / 56), and that is overwhelmingly coverage, not crime.
-  Against the one official figure available —
-  **295 total crime cases in Makati in 2024** (Mayor's State of the City Address) — news
-  coverage captured roughly **3–6%** of that year. A year-on-year comparison from this
-  data measures journalism, not crime.
+  The one official figure available —
+  **295 "crime cases" in Makati in 2024** — is a claim in the mayor's State of the City
+  Address covering all crime types, with the scope never defined and no police source,
+  so it is not a robbery denominator. A year-on-year comparison from this data measures
+  journalism, not crime.
 
-- **This is a small fraction of even the officially reported total.** The closest official figure (32 theft+robbery cases in
-  Makati in Dec 2024, 13 in Jan 2025) implies roughly 150–350 reported cases a year.
+- **This is a small fraction of even the officially reported total.** The closest
+  official figures are monthly and combine theft with robbery: 32 cases in Dec 2024,
+  13 in Jan 2025. No full-year Makati figure has been published for 2025 or 2026.
 - **No dot is a real address.** Sources rarely give one. Each row records how it was
   placed, from `intersection` (~50 m) down to `barangay` (~900 m). Roughly a third are
   accurate only to a neighbourhood. Use the precision-radius toggle to see it.

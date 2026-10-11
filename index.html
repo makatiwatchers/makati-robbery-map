@@ -459,23 +459,36 @@ for (const k of ['blue','orange']) $('#c-'+k).textContent =
 for (const k of ['weapon','motorcycle','house']) $('#c-'+k).textContent =
   INCIDENTS.filter(d=>d.flags.includes(k)).length;
 
-// Official counts, for scale. Only figures that were actually published are
-// listed; a year with none says so rather than borrowing another year's.
+// Official counts, for scale. Each is labelled with what it actually counts.
+// None is robbery-specific, and they are not like-for-like across years, so
+// the wording has to carry that rather than implying a clean denominator.
 const OFFICIAL = {
-  '2024': {n: '295', what: 'crime cases recorded by Makati police (all crime types)'},
+  '2024': {short: '295 claimed*',
+           full: "295 'crime cases' for the whole of 2024, claimed in the mayor's "
+               + "January 2025 State of the City Address. All crime types, scope never "
+               + "defined, and not a police release."},
+  '2025': {short: 'none published*',
+           full: "No full-year figure was published. The only official number for 2025 "
+               + "is 13 theft-and-robbery cases in January alone (Makati police, "
+               + "down from 32 in December 2024)."},
+  '2026': {short: 'none published',
+           full: "No official figure has been published for Makati for 2026. Police were "
+               + "asked publicly in August 2026 and answered without numbers."},
 };
 (function yearFootnote(){
   const el = $('#yearfoot'); if (!el) return;
   el.innerHTML = YEARS.map(y => {
     const mapped = INCIDENTS.filter(d => d.year === y).length;
     const o = OFFICIAL[y];
-    const right = o ? `${o.n} official` : 'no official figure published';
-    return `<div class="yf"><b>${y}</b><span>${mapped} mapped</span>` +
-           `<span class="yf-o">${right}</span></div>`;
+    const right = o ? o.short : 'none published';
+    const tip  = o ? ` title="${esc(o.full)}"` : '';
+    return `<div class="yf"${tip}><b>${y}</b><span>${mapped} mapped</span>` +
+           `<span class="yf-o">${esc(right)}</span></div>`;
   }).join('') +
-  `<div class="yf-note">Official figures count all crime, not robbery alone, and are not
-   published every year. Where both exist the gap shows how little of the real total
-   reaches a public record.</div>`;
+  `<div class="yf-note">* Official counts are not robbery figures and are not
+   comparable year to year: 2024's is an undefined all-crime total from a political
+   speech, 2025's only number covers a single month, and none exists for 2026. Hover a
+   row for the detail.</div>`;
 })();
 
 // header date range follows whichever years are in the data
