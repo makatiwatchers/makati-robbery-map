@@ -14,48 +14,24 @@ lot, and not randomly.
 
 - **Years are not comparable — this is the most important caveat.** The counts rise
   steeply across years (10 / 17 / 56), and that is overwhelmingly coverage, not crime.
-  Makati robbery only became a news story in **October 2024**, when the Japanese Embassy
-  began posting safety notices; February–July 2024 is empty for that reason. Police
-  began publishing per-incident releases later still, and community reports could only
-  be collected for the most recent year. Against the one official figure available —
+  Against the one official figure available —
   **295 total crime cases in Makati in 2024** (Mayor's State of the City Address) — news
   coverage captured roughly **3–6%** of that year. A year-on-year comparison from this
   data measures journalism, not crime.
 
-- **Blue** = verified by an official police statement, news reporting, or a condominium
-  memo. **Orange** = social-media report, unverified. They are not comparable; do not
-  read the two colours as one count.
-- **This is a small fraction of even the officially reported total.** No 2026
-  Makati-level count is public. The closest official figure — 32 theft+robbery cases in
-  Makati in Dec 2024, 13 in Jan 2025 — implies roughly 150–350 reported cases a year.
+- **This is a small fraction of even the officially reported total.** The closest official figure (32 theft+robbery cases in
+  Makati in Dec 2024, 13 in Jan 2025) implies roughly 150–350 reported cases a year.
 - **No dot is a real address.** Sources rarely give one. Each row records how it was
   placed, from `intersection` (~50 m) down to `barangay` (~900 m). Roughly a third are
   accurate only to a neighbourhood. Use the precision-radius toggle to see it.
-- **Dates are soft.** Only about half the incidents are dated to the day. Community
-  reports usually carry the date someone *posted*, not the date of the incident, so the
-  timeline reads as "when this was reported".
+- **Dates are estimated based on when it was reported/shared.** Only about half the incidents are dated to the day.
 - **Coverage is skewed.** News clusters on wealthy victims and foreign nationals; the
   community record clusters on the CBD, Salcedo and Legazpi, where the people who post
-  live and work. Several barangays return almost nothing from either — a reporting gap,
-  not an absence of crime.
-- **Barangay attribution is unreliable.** Many rows have no barangay. One official
-  police statement in this dataset describes a victim robbed at gunpoint while "walking
-  toward a hotel in Brgy. Poblacion" but places the scene in Barangay Bel-Air — so a
-  nightlife robbery is counted against the neighbouring barangay. Treat the Makati
-  Avenue / P. Burgos corridor as an attribution boundary.
-- **Poblacion is under-represented here, not low-crime.** Reports from the nightlife
-  district are overwhelmingly undated or second-hand, because its victims are the least
-  likely to post a dated first-hand account. No rows were invented to close that gap.
+  live and work. Poblacion is under-represented here, not low-crime.
 
 Use this to see where reports concentrate. Do not use it to compare how safe
 neighbourhoods are, and do not treat an absence of dots as an absence of crime.
 
-## Privacy
-
-Two incidents were reported in the press with the victims' names. Those names are
-removed here: a searchable map pinning a named person's home is a different thing from a
-news article. No victim names, unit numbers or contact details appear anywhere on this
-page or in its CSV export.
 
 ## Credits
 
