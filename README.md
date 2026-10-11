@@ -35,6 +35,13 @@ Use this to see where reports concentrate. Do not use it to compare how safe
 neighbourhoods are, and do not treat an absence of dots as an absence of crime.
 
 
+## A note on two columns
+
+`barangay_disputed` flags a location whose barangay attribution is contested — the EMBO
+barangays transferred from Makati to Taguig in 2021, and one incident on the
+Makati–Pasay boundary. `location_precision` records how each dot was placed, from
+`intersection` (~50 m) to `barangay` (~900 m).
+
 ## Credits
 
 Basemap drawn from [OpenStreetMap](https://www.openstreetmap.org/copyright) data, © OpenStreetMap
