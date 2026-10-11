@@ -56,10 +56,13 @@
   input[type=range]{width:100%;accent-color:var(--blue)}
   .rangelbl{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;
             margin-top:4px;font-variant-numeric:tabular-nums}
-  .warnbox{margin:8px 0 2px;padding:9px 11px;border-radius:8px;font-size:11.5px;
-    line-height:1.55;color:var(--warn-ink);background:var(--warn-bg);
-    border:1px solid var(--warn-line)}
-  .warnbox b{color:var(--ink)}
+  .yearfoot{margin:10px 0 2px}
+  .yf{display:flex;gap:8px;align-items:baseline;font-size:11.5px;color:var(--muted);
+      padding:2px 0;font-variant-numeric:tabular-nums}
+  .yf b{color:var(--ink);font-weight:600;flex:0 0 32px}
+  .yf span{flex:0 0 auto}
+  .yf .yf-o{margin-left:auto;text-align:right;color:var(--faint)}
+  .yf-note{margin-top:7px;font-size:11px;line-height:1.5;color:var(--faint)}
   .note{color:var(--faint);font-size:11.5px;line-height:1.5;margin-top:14px;
         border-top:1px solid var(--line);padding-top:12px}
   button.reset{margin-top:12px;width:100%;padding:7px;border:1px solid var(--line);
@@ -166,23 +169,14 @@
   <aside id="side">
     <h2>Year</h2>
     <div id="years"></div>
-    <div class="warnbox">
-      <b>Years are not comparable.</b> The rise across years is mostly coverage, not
-      crime. Makati robbery only became a news story in October 2024, when the Japanese
-      Embassy began posting safety notices — which is why Feb–Jul 2024 is empty. Police
-      began publishing per-incident releases later still, and community reports could
-      only be collected for the most recent year. Against the one official figure
-      available — 295 total crime cases in Makati in 2024 — news coverage captured
-      roughly 3–6% of that year. Read each year on its own; a year-on-year comparison
-      here measures journalism, not crime.
-    </div>
+    <div id="yearfoot" class="yearfoot"></div>
 
     <h2>Source</h2>
     <label class="row"><input type="checkbox" class="f-src" value="blue" checked>
       <span class="swatch" style="background:#2563eb"></span>Verified — news
       <span class="count" id="c-blue"></span></label>
     <label class="row"><input type="checkbox" class="f-src" value="orange" checked>
-      <span class="swatch" style="background:#f97316"></span>Social media — unverified
+      <span class="swatch" style="background:#f97316"></span>Unverified — social media
       <span class="count" id="c-orange"></span></label>
 
     <h2>Incident features</h2>
@@ -443,8 +437,10 @@ function apply(){
 }
 // one checkbox per year present in the data
 const YEARS = [...new Set(ALLROWS.map(d=>d.year))].sort();
+const LATEST = YEARS[YEARS.length - 1];
 $('#years').innerHTML = YEARS.map(y =>
-  `<label class="row"><input type="checkbox" class="f-year" value="${y}" checked>` +
+  `<label class="row"><input type="checkbox" class="f-year" value="${y}"` +
+  `${y === LATEST ? ' checked' : ''}>` +
   `<span>${y}</span><span class="count">` +
   `${INCIDENTS.filter(d=>d.year===y).length}</span></label>`).join('');
 
@@ -452,7 +448,7 @@ $$('.f-src,.f-flag,.f-year').forEach(x=>x.addEventListener('change',apply));
 ['m0','m1','showprec'].forEach(id=>$('#'+id).addEventListener('input',apply));
 $('#reset').addEventListener('click',()=>{
   $$('.f-src').forEach(x=>x.checked=true);
-  $$('.f-year').forEach(x=>x.checked=true);
+  $$('.f-year').forEach(x=>{ x.checked = (x.value === LATEST); });
   $$('.f-flag').forEach(x=>x.checked=false);
   $('#m0').value=0; $('#m1').value=11; $('#showprec').checked=false; apply();
   locked = false; fitting = false;
@@ -462,6 +458,25 @@ for (const k of ['blue','orange']) $('#c-'+k).textContent =
   INCIDENTS.filter(d=>d.color===k).length;
 for (const k of ['weapon','motorcycle','house']) $('#c-'+k).textContent =
   INCIDENTS.filter(d=>d.flags.includes(k)).length;
+
+// Official counts, for scale. Only figures that were actually published are
+// listed; a year with none says so rather than borrowing another year's.
+const OFFICIAL = {
+  '2024': {n: '295', what: 'crime cases recorded by Makati police (all crime types)'},
+};
+(function yearFootnote(){
+  const el = $('#yearfoot'); if (!el) return;
+  el.innerHTML = YEARS.map(y => {
+    const mapped = INCIDENTS.filter(d => d.year === y).length;
+    const o = OFFICIAL[y];
+    const right = o ? `${o.n} official` : 'no official figure published';
+    return `<div class="yf"><b>${y}</b><span>${mapped} mapped</span>` +
+           `<span class="yf-o">${right}</span></div>`;
+  }).join('') +
+  `<div class="yf-note">Official figures count all crime, not robbery alone, and are not
+   published every year. Where both exist the gap shows how little of the real total
+   reaches a public record.</div>`;
+})();
 
 // header date range follows whichever years are in the data
 (function headerSpan(){
