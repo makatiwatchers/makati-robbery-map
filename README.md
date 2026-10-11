@@ -1,7 +1,8 @@
 # Makati Robbery Map, 2026
 
 An interactive map of **reported** robbery incidents in Makati City, Metro Manila,
-1 January – 5 October 2026. Open `index.html`, or the published page.
+covering **2024, 2025 and 2026** (2026 to 5 October). Open `index.html`, or the
+published page. Use the year filter to view one year at a time.
 
 Click any dot for the incident's location, notes, flags, how precisely it was placed,
 and a link to its source. The Table tab lists every row and exports CSV.
@@ -10,6 +11,16 @@ and a link to its source. The Table tab lists every row and exports CSV.
 
 **This maps where robberies are *reported*, not where they happen.** The two differ a
 lot, and not randomly.
+
+- **Years are not comparable — this is the most important caveat.** The counts rise
+  steeply across years (10 / 17 / 56), and that is overwhelmingly coverage, not crime.
+  Makati robbery only became a news story in **October 2024**, when the Japanese Embassy
+  began posting safety notices; February–July 2024 is empty for that reason. Police
+  began publishing per-incident releases later still, and community reports could only
+  be collected for the most recent year. Against the one official figure available —
+  **295 total crime cases in Makati in 2024** (Mayor's State of the City Address) — news
+  coverage captured roughly **3–6%** of that year. A year-on-year comparison from this
+  data measures journalism, not crime.
 
 - **Blue** = verified by an official police statement, news reporting, or a condominium
   memo. **Orange** = social-media report, unverified. They are not comparable; do not
